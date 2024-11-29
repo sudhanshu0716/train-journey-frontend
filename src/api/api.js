@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiUrl = "http://localhost:5000/api/reports"; 
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/api/reports";
 
 export const checkReports = async (trainNo, date) => {
   try {
