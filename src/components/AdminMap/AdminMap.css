@@ -1,0 +1,23 @@
+.admin-map-container {
+  text-align: center;
+}
+
+.admin-map-container input {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 50%;
+}
+
+.admin-map-container button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-map-container button:hover {
+  background-color: #0056b3;
+}
