@@ -1,6 +1,3 @@
-
-
-/* General container styles */
 .scenic-view {
   min-height: 100vh; /* Ensure it covers the full viewport */
   display: flex;
