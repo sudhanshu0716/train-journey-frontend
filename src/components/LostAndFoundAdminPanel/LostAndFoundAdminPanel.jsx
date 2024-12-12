@@ -28,7 +28,7 @@ const LostAndFoundAdminPanel = () => {
       );
       setReports(response.data.reports);
     } catch (error) {
-      alert(error.response?.data?.message || 'Failed to fetch reports.');
+      alert( 'Failed to fetch reports.');
     }
   };
 

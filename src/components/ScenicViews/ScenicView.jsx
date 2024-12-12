@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { Icon } from "leaflet";
-import "./ScenicView.css";
+import "./scenicView.css";
 
 const customIcon = new Icon({
   iconUrl: "https://unpkg.com/leaflet/dist/images/marker-icon.png",
@@ -57,7 +57,7 @@ const ScenicView = () => {
       Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-    return R * c; // Returns the distance in meters
+    return R * c; 
   };
 
   const shareLocation = () => {

@@ -23,7 +23,7 @@ const SignUpPage = () => {
 
       if (response.ok) {
         alert("Sign-Up Successful");
-        localStorage.setItem("token", data.token); 
+        localStorage.setItem("token", data.token);
         navigate("/login"); 
       } else {
         alert(data.message || "Sign-Up Failed");

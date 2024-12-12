@@ -1,7 +1,5 @@
 import axios from 'axios';
-
-const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/api/reports";
-
+const apiUrl ="http://localhost:5000/api/reports";
 export const checkReports = async (trainNo, date) => {
   try {
     const response = await axios.get(`${apiUrl}?trainNo=${trainNo}&date=${date}`);
@@ -10,7 +8,6 @@ export const checkReports = async (trainNo, date) => {
     throw new Error("Error fetching reports");
   }
 };
-
 export const submitReport = async (trainNo, date, scale) => {
   try {
     const response = await axios.post(`${apiUrl}/submit`, { trainNo, date, scale });
@@ -19,3 +16,5 @@ export const submitReport = async (trainNo, date, scale) => {
     throw new Error("Error submitting report");
   }
 };
+export default apiUrl;
+

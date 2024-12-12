@@ -37,7 +37,7 @@ const LostAndFound = () => {
         contactDetails: "",
       });
     } catch (error) {
-      alert(error.response?.data?.message || "Failed to report the item. Please try again.");
+      alert( "Failed to report the item. Please try again.");
     }
   };
 
@@ -50,7 +50,7 @@ const LostAndFound = () => {
       );
       setLostItems(response.data.lostItems);
     } catch (error) {
-      alert(error.response?.data?.message || "Failed to fetch lost items. Please try again.");
+      alert("Failed to fetch lost items. Please try again.");
     }
   };
 

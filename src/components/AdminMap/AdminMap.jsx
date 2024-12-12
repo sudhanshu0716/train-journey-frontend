@@ -63,7 +63,7 @@ const AdminMap = () => {
           await fetch(`http://localhost:5000/api/marked-points/delete/${markerToRemove._id}`, {
             method: "DELETE",
           });
-
+          
           setMarkers(markers.filter((marker) => marker._id !== markerToRemove._id));
           alert("Marker removed!");
         } catch (error) {

@@ -16,7 +16,6 @@ const AdminMenu = () => {
           </Link>
         </div>
 
-     
         <div className="card">
           <h3>Lost and Found Admin Panel</h3>
           <p>Manage lost and found reports and data.</p>
