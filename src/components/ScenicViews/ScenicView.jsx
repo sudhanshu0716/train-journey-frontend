@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "leaflet";
-import "./scenicView.css";
+import "./ScenicView.css";
 
 const customIcon = new Icon({
   iconUrl: "https://unpkg.com/leaflet/dist/images/marker-icon.png",
