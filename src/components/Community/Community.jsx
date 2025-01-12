@@ -4,7 +4,7 @@ function Community() {
   return (
     <>
     <div>Community h1</div>
-    <div></div>
+    <div> nj</div>
     </>
   )
 }
