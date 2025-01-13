@@ -6,7 +6,7 @@
   "homepage": "https://sudhanshu0716.github.io/train-journey-frontend/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
