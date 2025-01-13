@@ -23,8 +23,8 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/main-menu" element={<MainMenu />} />
         <Route path="/lost" element={<LostAndFound />} />
-        <Route path="/scenic" element={<ScenicView />} />
-        <Route path="/test" element={<Test />} />
+        {/* <Route path="/scenic" element={<ScenicView />} /> */}
+        <Route path="/scenic" element={<Test />} />
 
         <Route path="/crush" element={<CrushTheRush />} />
         
