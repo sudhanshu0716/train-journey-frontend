@@ -3,8 +3,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(../../assets/scenic.jpg);
+  /* background-image: url(../../assets/scenic.jpg); */
   background-size: cover;
+}
+/* Optional: Add hover effect for the alarm icon */
+.fa-bell:hover {
+  color: #eb0d0d;
+  transition: color 0.3s ease;
+}
+.head-scenic{
+  display: flex;
+  justify-content: center;
+  margin-left: 150px;
+}
+.head-scenic .alarm{
+ margin-left: 100px;
 }
 
 .scenic-view-container {
@@ -12,8 +25,8 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 1200px;
-  background-color: #ffffffe4; /* Inner container background */
+  width:700px;
+  background-color: #fffffff1; /* Inner container background */
   margin: 0 20px;
   position: fixed;
 }
@@ -110,5 +123,25 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+
+.moving-gif-container{
+  height: 20px;
+  width: 100px;
+}
+.moving-gif {
+  width: 100%;
+  height: auto;
+  animation: moveGif 10s linear infinite;
+}
+
+@keyframes moveGif {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(50vw);
   }
 }
