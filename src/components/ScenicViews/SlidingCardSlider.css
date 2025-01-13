@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700;900&display=swap');
+
+.slider-container {
+  border-radius: 0 0 0 25px;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 25vh;
+  background: rgb(0, 0, 0);
+ 
+  transition: right 0.5s ease;
+  overflow-y: auto;
+  z-index: 1000;
+}
+.slider-container.active {
+  right: 0;
+}
+
+.arrow-toggle {
+  position: fixed;
+  top: 10%;
+  right: 0;
+  width: 30px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  z-index: 1001;
+}
+
+.arrow-toggle:hover {
+  background-color: #ccc;
+}
+.swiper-pagination{
+    color: white;
+}
+.arrow-toggle::before {
+  content: "\2190";
+  font-size: 20px;
+  color: #000;
+  transition: transform 0.5s;
+}
+
+.slider-container.active + .arrow-toggle::before {
+  transform: rotate(180deg);
+}
+
+.card-list .card-item {
+  color: #fff;
+  padding: 0px;
+  padding-right: 10px;
+  text-align: center;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.2);
+  margin: 20px;
+}
+
+.user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
