@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ScenicView from './ScenicView';
 import welcomeVideo from "../../assets/welcome.mp4"
 import loopVideo from "../../assets/map.mp4";
-import './Test.css';
+import './test.css';
 
 const Test = () => {
   const [playSecondVideo, setPlaySecondVideo] = useState(false);
