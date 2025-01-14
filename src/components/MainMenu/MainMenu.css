@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   background-image: url(../../assets/background.jpg);
+  height: calc(100vh - 0px);
+  overflow-y: auto;
 }
 
 .main-menu-container {
