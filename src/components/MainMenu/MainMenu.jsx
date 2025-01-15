@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./MainMenu.css";
+import wheel from "../../assets/wheel.png"; // Import the PNG
+import gate from "../../assets/gate.png";
+import buffer from "../../assets/buffer.png";
 
 // Grid images
 import image1 from "../../assets/1.jpg";
@@ -19,7 +22,14 @@ const images = [image1, image2, image3, image4, image5, image6];
 const MainMenu = () => {
   return (
     <div className="main-menu-wrapper">
+      <div className="navbar">
+      <div className="buffer">
+        <img src={buffer} alt="" />
+      </div>
       <nav className="horizontal-nav">
+        <div className="gate">
+        <img src={gate} alt="" />
+        </div>
         <ul>
           <li className="nav-item">
             <Link to="/scenic">
@@ -57,17 +67,29 @@ const MainMenu = () => {
               <span className="underline"></span>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/about">
-              About
-              <span className="underline"></span>
-            </Link>
-          </li>
         </ul>
+        <div className="gate1">
+          <img src={gate} alt="" />
+        </div>
+        <div className="nav-text-container">
+          <div className="nav-text">INDIAN RAILWAYS</div>
+          <div className="nav-text">INDIAN RAILWAYS</div>
+          <div className="nav-text">INDIAN RAILWAYS</div>
+        </div>
+        <div className="nav-text-red-container">
+          <div className="nav-text-red">A1</div>
+          <div className="nav-text-red">NEW DELHI ⇋ BHOPAL</div>
+          <div className="nav-text-red">12138</div>
+          <div className="nav-text-red">A1</div>
+        </div>
+        <div className="wheels-container">
+          {[...Array(4)].map((_, index) => (
+            <img key={index} src={wheel} alt="Train Wheel" className="train-wheels" />
+          ))}
+        </div>
       </nav>
+      </div>
 
-      <hr className="mmhr" />
-      <hr className="mmhr" />
       <br />
       <br />
       <br />
@@ -98,7 +120,7 @@ const MainMenu = () => {
           >
             <FaLinkedin />
           </a>
-          <a href="" className="mmfoot-list-item">
+          <a href="mailto:example@example.com" className="mmfoot-list-item">
             <BiLogoGmail />
           </a>
           <a
