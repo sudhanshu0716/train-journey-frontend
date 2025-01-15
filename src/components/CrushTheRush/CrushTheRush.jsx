@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { checkReports, submitReport } from "../../api/api"; 
+import { checkReports, submitReport } from "../../api/api";
 import "./crush.css";
 
 const CrushTheRush = () => {
@@ -14,6 +14,8 @@ const CrushTheRush = () => {
 
   const [averageScale, setAverageScale] = useState(null);
   const [crowdMessage, setCrowdMessage] = useState("");
+
+  const [showPopup, setShowPopup] = useState(false); // State to toggle pop-up visibility
 
   const handleCheckSubmit = async (e) => {
     e.preventDefault();
@@ -31,11 +33,13 @@ const CrushTheRush = () => {
         } else {
           setCrowdMessage("Easy to board, no crowd or medium crowd.");
         }
+        setShowPopup(true); // Show pop-up with train details
       }
     } catch (error) {
       setCheckResult("No reports available for this train on the given date.");
       setAverageScale(null);
       setCrowdMessage("");
+      setShowPopup(true); // Show pop-up even if no data is found
     }
   };
 
@@ -52,6 +56,10 @@ const CrushTheRush = () => {
     }
   };
 
+  const closePopup = () => {
+    setShowPopup(false); // Close the pop-up
+  };
+
   return (
     <div className="crush-container">
       <motion.div
@@ -61,6 +69,8 @@ const CrushTheRush = () => {
         transition={{ duration: 0.5 }}
       >
         <h2 className="crush-title">Crush the Rush</h2>
+
+        {/* Check Train Rush Section */}
         <div className="form-section">
           <h3 className="section-title">Check Train Rush</h3>
           <form onSubmit={handleCheckSubmit}>
@@ -77,24 +87,13 @@ const CrushTheRush = () => {
               onChange={(e) => setCheckDate(e.target.value)}
               required
             />
-            <button type="submit"  className="button-check">Check</button>
+            <button type="submit" className="button-check">
+              Check
+            </button>
           </form>
-          {checkResult && <p>{checkResult}</p>}
-          {averageScale !== null && (
-            <div className="meter-container">
-              <p>Average Scale: {averageScale}</p>
-              <input
-                type="range"
-                min="1"
-                max="10"
-                value={averageScale}
-                readOnly
-                className="crowd-meter"
-              />
-              <p>{crowdMessage}</p>
-            </div>
-          )}
         </div>
+
+        {/* Provide Train Report Section */}
         <div className="form-section">
           <h3 className="section-title">Provide Train Report</h3>
           <form onSubmit={handleReportSubmit}>
@@ -119,10 +118,44 @@ const CrushTheRush = () => {
               max="10"
               required
             />
-            <button type="submit" className="button-check">Submit Report</button>
+            <button type="submit" className="button-check">
+              Submit Report
+            </button>
           </form>
         </div>
       </motion.div>
+
+      {/* Pop-up Modal */}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <div className="popup-head">
+              <h3 className="popup-title">
+                Train Report
+              </h3>
+              <button className="popup-close" onClick={closePopup}>
+                  &times;
+              </button>
+            </div>
+            <br />
+            <h4>{checkResult}</h4>
+            {averageScale !== null && (
+              <div className="meter-container">
+                <p>Average Scale: {averageScale}</p>
+                <input
+                  type="range"
+                  min="1"
+                  max="10"
+                  value={averageScale}
+                  readOnly
+                  className="crowd-meter"
+                />
+                <p>{crowdMessage}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -26,6 +26,7 @@ const SignUpPage = () => {
         localStorage.setItem("token", data.token);
         navigate("/login"); 
       } else {
+        console.log(data);
         alert(data.message || "Sign-Up Failed");
       }
     } catch (error) {
