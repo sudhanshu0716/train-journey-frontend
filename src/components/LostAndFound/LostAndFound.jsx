@@ -145,12 +145,12 @@ const LostAndFound = () => {
             {lostItems.length > 0 ? (
               <ul>
                 {lostItems.map((item) => (
-                  <li key={item._id}>
+                  <li className="to-be-found" key={item._id}>
                     <p>
                       <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong>{" "}
                       {item.date} | <strong>Description:</strong> {item.itemDescription}
                     </p>
-                    <button onClick={() => markAsFounded(item._id)}>Mark as Founded</button>
+                    <button className="to-be-found-button" onClick={() => markAsFounded(item._id)}>Mark as Founded</button>
                   </li>
                 ))}
               </ul>
