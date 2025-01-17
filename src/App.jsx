@@ -12,6 +12,10 @@ import AdminMap from "./components/AdminMap/AdminMap";
 import AdminMenu from "./components/AdminMenu/AdminMenu";
 import LostAndFoundAdminPanel from "./components/LostAndFoundAdminPanel/LostAndFoundAdminPanel";
 import Test from "./components/ScenicViews/test";
+import About from "./components/Aboutsec/About";
+import PrivacyPolicy from "./components/PrivacyPolicysec/PrivacyPolicy";
+import Feedback from "./components/Feedbacksec/Feedback";
+import HelpForm from "./components/Twitter/HelpForm";
 
 const App = () => {
   return (
@@ -28,11 +32,15 @@ const App = () => {
 
         <Route path="/crush" element={<CrushTheRush />} />
         
-        {/* Admin-facing routes */}
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/adminmap" element={<AdminMap />} />
         <Route path="/adminmenu" element={<AdminMenu />} />
         <Route path="/adminlost" element={<LostAndFoundAdminPanel />} />
+        <Route path="/" element={<MainMenu />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/feedback" element={<Feedback/>} />
+        <Route path="/instant-help" element={<HelpForm />} />
       </Routes>
     </Router>
   );
