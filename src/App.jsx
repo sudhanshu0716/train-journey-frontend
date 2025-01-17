@@ -13,9 +13,9 @@ import AdminMenu from "./components/AdminMenu/AdminMenu";
 import LostAndFoundAdminPanel from "./components/LostAndFoundAdminPanel/LostAndFoundAdminPanel";
 import Test from "./components/ScenicViews/test";
 import About from "./components/Aboutsec/About";
-import PrivacyPolicy from "./components/PrivacyPolicysec/PrivacyPolicy";
 import Feedback from "./components/Feedbacksec/Feedback";
 import HelpForm from "./components/Twitter/HelpForm";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy";
 
 const App = () => {
   return (
