@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FirstPage.css";
 import video from "../../assets/background-video2.mp4"
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/logo2.png";
 
 const FirstPage = () => {
   const navigate = useNavigate();
