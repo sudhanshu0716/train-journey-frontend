@@ -17,6 +17,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa";
 
+
 const images = [image1, image2, image3, image4, image5, image6];
 
 const MainMenu = () => {
@@ -55,12 +56,7 @@ const MainMenu = () => {
               <span className="underline"></span>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/privacy-and-policies">
-              Privacy Policy
-              <span className="underline"></span>
-            </Link>
-          </li>
+          
           <li className="nav-item">
             <Link to="/community-section">
               Community 
@@ -130,7 +126,14 @@ const MainMenu = () => {
             <FaGithub />
           </a>
         </div>
+        <div>
+        <div className="mmfoot-links">
+          <Link to="/about" className="mmfoot-link">About Us</Link>
+          <Link to="/privacy-policy" className="mmfoot-link">Privacy Policy</Link>
+          <Link to="/feedback" className="mmfoot-link">Feedback</Link>
+        </div>
         <h4 className="mmcopyr">2024 © SUDHANSHU, All Rights Reserved</h4>
+        </div>
       </div>
     </div>
   );
