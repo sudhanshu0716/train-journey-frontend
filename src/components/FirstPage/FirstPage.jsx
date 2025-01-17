@@ -45,12 +45,12 @@ const FirstPage = () => {
       <div className="fp-header">
         <img className="fp-logo" src={Logo}></img>
         <div className="fpbutton">
-          <button className="fp-login-btn" onClick={handleLogin}>
+          <button className="fp-login-btn glass-btn" onClick={handleLogin}>
             Login
           </button>
-          <button className="fp-login-btn" onClick={handleLoginAdmin}>
+          {/* <button className="fp-login-btn glass-btn" onClick={handleLoginAdmin}>
             Admin Login
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -63,7 +63,7 @@ const FirstPage = () => {
           ))}
         </div>
       </div>
-      <button className="fp-get-started-btn" onClick={handleGetStarted}>
+      <button className="fp-get-started-btn glass-btn" onClick={handleGetStarted}>
         Get Started
       </button>
 
