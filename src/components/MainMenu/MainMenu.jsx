@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./MainMenu.css";
-import scenicImg from "../../assets/scenic.jpg";
-import lostFoundImg from "../../assets/lf.png";
-import crushTheRushImg from "../../assets/crush_the_rush.jpg";
+import wheel from "../../assets/wheel.png"; // Import the PNG
+import gate from "../../assets/gate.png";
+import buffer from "../../assets/buffer.png";
 
 // Grid images
 import image1 from "../../assets/1.jpg";
@@ -22,44 +22,81 @@ const images = [image1, image2, image3, image4, image5, image6];
 const MainMenu = () => {
   return (
     <div className="main-menu-wrapper">
-
-      <div className="main-menu-container">
-        <h1 className="main-menu-title">MAIN MENU</h1>
-
-        <div className="main-menu-cards">
-          <div className="main-menu-card">
-            <Link to="/scenic">
-              <div className="main-card-image">
-                <img src={scenicImg} alt="Scenic Views" />
-              </div>
-              <div className="main-card-title">Scenic Views</div>
-            </Link>
-          </div>
-
-          <div className="main-menu-card">
-            <Link to="/lost">
-              <div className="main-card-image">
-                <img src={lostFoundImg} alt="Lost and Found" />
-              </div>
-              <div className="main-card-title">Lost and Found</div>
-            </Link>
-          </div>
-
-          <div className="main-menu-card">
-            <Link to="/crush">
-              <div className="main-card-image">
-                <img src={crushTheRushImg} alt="Crush the Rush" />
-              </div>
-              <div className="main-card-title">Crush the Rush</div>
-            </Link>
-          </div>
-        </div>
+      <div className="navbar">
+      <div className="buffer">
+        <img src={buffer} alt="" />
       </div>
-        <hr className="mmhr"/>
-        <hr className="mmhr"/>
-      <h1 className="heading-grid">Most Beautiful Train Journeys In India You Must Experience</h1>
+      <nav className="horizontal-nav">
+        <div className="gate">
+        <img src={gate} alt="" />
+        </div>
+        <ul>
+          <li className="nav-item">
+            <Link to="/scenic">
+              Scenic Views
+              <span className="underline"></span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/crush">
+              Crush the Rush
+              <span className="underline"></span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/lost">
+              Lost and Found
+              <span className="underline"></span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/instant-help">
+              Instant Help
+              <span className="underline"></span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/privacy-and-policies">
+              Privacy Policy
+              <span className="underline"></span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/community-section">
+              Community 
+              <span className="underline"></span>
+            </Link>
+          </li>
+        </ul>
+        <div className="gate1">
+          <img src={gate} alt="" />
+        </div>
+        <div className="nav-text-container">
+          <div className="nav-text">INDIAN RAILWAYS</div>
+          <div className="nav-text">INDIAN RAILWAYS</div>
+          <div className="nav-text">INDIAN RAILWAYS</div>
+        </div>
+        <div className="nav-text-red-container">
+          <div className="nav-text-red">A1</div>
+          <div className="nav-text-red">NEW DELHI ⇋ BHOPAL</div>
+          <div className="nav-text-red">12138</div>
+          <div className="nav-text-red">A1</div>
+        </div>
+        <div className="wheels-container">
+          {[...Array(4)].map((_, index) => (
+            <img key={index} src={wheel} alt="Train Wheel" className="train-wheels" />
+          ))}
+        </div>
+      </nav>
+      </div>
 
-  
+      <br />
+      <br />
+      <br />
+      <h1 className="heading-grid">
+        Most Beautiful Train Journeys In India You Must Experience
+      </h1>
+
       <div className="image-grid-container">
         {images.map((image, index) => (
           <div key={index} className="grid-item">
@@ -67,13 +104,31 @@ const MainMenu = () => {
           </div>
         ))}
       </div>
+
       <div className="mmfoot">
         <h1 className="mmfoot-head">CONTACT US</h1>
         <div className="mmfoot-list">
-          <a href="https://www.instagram.com/travel._.trains?igsh=dXd5eDgyajB0MG82" className="mmfoot-list-item"><FaInstagram /></a>
-          <a href="https://www.linkedin.com/in/sudh0716/" className="mmfoot-list-item"><FaLinkedin /></a>
-          <a href="" className="mmfoot-list-item"><BiLogoGmail /></a>
-          <a href="https://github.com/sudhanshu0716" className="mmfoot-list-item"><FaGithub /></a>
+          <a
+            href="https://www.instagram.com/travel._.trains?igsh=dXd5eDgyajB0MG82"
+            className="mmfoot-list-item"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/sudh0716/"
+            className="mmfoot-list-item"
+          >
+            <FaLinkedin />
+          </a>
+          <a href="mailto:example@example.com" className="mmfoot-list-item">
+            <BiLogoGmail />
+          </a>
+          <a
+            href="https://github.com/sudhanshu0716"
+            className="mmfoot-list-item"
+          >
+            <FaGithub />
+          </a>
         </div>
         <h4 className="mmcopyr">2024 © SUDHANSHU, All Rights Reserved</h4>
       </div>

@@ -11,6 +11,7 @@ import AdminLogin from "./components/AdminLogin/AdminLogin";
 import AdminMap from "./components/AdminMap/AdminMap";
 import AdminMenu from "./components/AdminMenu/AdminMenu";
 import LostAndFoundAdminPanel from "./components/LostAndFoundAdminPanel/LostAndFoundAdminPanel";
+import Test from "./components/ScenicViews/test";
 
 const App = () => {
   return (
@@ -22,7 +23,9 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/main-menu" element={<MainMenu />} />
         <Route path="/lost" element={<LostAndFound />} />
-        <Route path="/scenic" element={<ScenicView />} />
+        {/* <Route path="/scenic" element={<ScenicView />} /> */}
+        <Route path="/scenic" element={<Test />} />
+
         <Route path="/crush" element={<CrushTheRush />} />
         
         {/* Admin-facing routes */}

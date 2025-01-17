@@ -1,0 +1,62 @@
+/* Container splits the screen vertically */
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  /* Left video section */
+  .video-section {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Video styling for full coverage */
+  .video {
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Right text section */
+  .text-section {
+    flex: 1;
+    background: linear-gradient(135deg, #0f0e11, #303033);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Centered heading */
+  .text-section h1 {
+    font-size: 4rem;
+    color: #f19429;
+    
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 2px 2px 10px rgb(255, 255, 255);
+    animation: glow 3s infinite alternate;
+  }
+  
+  /* Glowing text animation */
+  /* @keyframes glow {
+    from {
+      text-shadow: 0 5px 20px #fff, 0 0 40px #ff7c2f, 0 0 30px #d09528;
+    }
+    to {
+      text-shadow: 0 5px 20px #fff, 0 0 40px #38cd47, 0 0 60px #72cb0c;
+    }
+  } */
+  
+  /* Smooth transitions */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    overflow: hidden;
+  }
+  
