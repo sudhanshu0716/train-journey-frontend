@@ -12,7 +12,7 @@ const MapComponent = () => {
   useEffect(() => {
     const fetchMarkers = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/markers'); // API call to fetch markers
+        const res = await axios.get('https://train-journey-backend.onrender.com/api/markers'); // API call to fetch markers
         setMarkers(res.data); // Set markers in state
       } catch (error) {
         console.error('Error fetching markers', error);
@@ -25,7 +25,7 @@ const MapComponent = () => {
   // Handle adding marker
   const handleAddMarker = async (lat, lng) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/markers/add', { lat, lng });
+      const res = await axios.post('https://train-journey-backend.onrender.com/api/markers/add', { lat, lng });
       setMarkers([...markers, res.data.marker]); // Add the new marker to state
     } catch (error) {
       console.error('Error adding marker', error);
@@ -35,7 +35,7 @@ const MapComponent = () => {
   // Handle deleting marker
   const handleDeleteMarker = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/markers/remove/${id}`);
+      await axios.delete(`https://train-journey-backend.onrender.com/api/markers/remove/${id}`);
       setMarkers(markers.filter(marker => marker._id !== id)); // Remove the marker from state
     } catch (error) {
       console.error('Error removing marker', error);

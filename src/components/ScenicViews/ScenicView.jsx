@@ -24,7 +24,7 @@ const ScenicView = () => {
   // Fetching marker data from API
   useEffect(() => {
     const fetchMarkers = async () => {
-      const response = await fetch("http://localhost:5000/api/marked-points");
+      const response = await fetch("https://train-journey-backend.onrender.com/api/marked-points");
       const data = await response.json();
       setMarkers(data);
     };

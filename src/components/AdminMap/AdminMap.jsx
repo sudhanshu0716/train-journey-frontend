@@ -19,7 +19,7 @@ const AdminMap = () => {
   useEffect(() => {
     const fetchMarkers = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/marked-points");
+        const response = await fetch("https://train-journey-backend.onrender.com/api/marked-points");
         const data = await response.json();
         setMarkers(data);
       } catch (error) {
@@ -36,7 +36,7 @@ const AdminMap = () => {
       const newMarker = { title: markerTitle, latitude: lat, longitude: lng };
 
       try {
-        const response = await fetch("http://localhost:5000/api/marked-points/save", {
+        const response = await fetch("https://train-journey-backend.onrender.com/api/marked-points/save", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newMarker),
@@ -60,7 +60,7 @@ const AdminMap = () => {
 
       if (markerToRemove) {
         try {
-          await fetch(`http://localhost:5000/api/marked-points/delete/${markerToRemove._id}`, {
+          await fetch(`https://train-journey-backend.onrender.com/api/marked-points/delete/${markerToRemove._id}`, {
             method: "DELETE",
           });
           

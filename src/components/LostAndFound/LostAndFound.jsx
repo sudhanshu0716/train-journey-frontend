@@ -26,7 +26,7 @@ const LostAndFound = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/lost-and-found/report-found",
+        "https://train-journey-backend.onrender.com/api/lost-and-found/report-found",
         foundForm
       );
       alert(response.data.message);
@@ -45,7 +45,7 @@ const LostAndFound = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/lost-and-found/search-lost",
+        "https://train-journey-backend.onrender.com/api/lost-and-found/search-lost",
         lostForm
       );
       setLostItems(response.data.lostItems);
@@ -57,7 +57,7 @@ const LostAndFound = () => {
   const markAsFounded = async (id) => {
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/lost-and-found/mark-as-founded/${id}`
+        `https://train-journey-backend.onrender.com/api/lost-and-found/mark-as-founded/${id}`
       );
       alert(response.data.message);
       setLostItems(lostItems.filter((item) => item._id !== id));
@@ -69,7 +69,7 @@ const LostAndFound = () => {
   const fetchFoundedItems = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/lost-and-found/founded-items"
+        "https://train-journey-backend.onrender.com/api/lost-and-found/founded-items"
       );
       setFoundedItems(response.data.foundedItems);
     } catch (error) {

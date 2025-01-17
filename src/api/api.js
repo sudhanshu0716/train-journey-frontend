@@ -1,5 +1,5 @@
 import axios from 'axios';
-const apiUrl ="http://localhost:5000/api/reports";
+const apiUrl ="https://train-journey-backend.onrender.com/api/reports";
 export const checkReports = async (trainNo, date) => {
   try {
     const response = await axios.get(`${apiUrl}?trainNo=${trainNo}&date=${date}`);

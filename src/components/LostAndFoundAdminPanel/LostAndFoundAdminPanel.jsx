@@ -23,7 +23,7 @@ const LostAndFoundAdminPanel = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/admin/reports',
+        'https://train-journey-backend.onrender.com/api/admin/reports',
         { date: formattedDate }
       );
       setReports(response.data.reports);
@@ -39,7 +39,7 @@ const LostAndFoundAdminPanel = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/admin/delete/${id}`
+        `https://train-journey-backend.onrender.com/api/admin/delete/${id}`
       );
       alert(response.data.message);
       setReports(reports.filter((report) => report._id !== id));
