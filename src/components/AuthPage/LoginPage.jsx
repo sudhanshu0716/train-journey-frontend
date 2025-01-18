@@ -41,7 +41,7 @@ const LoginPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="login-title bg">Login</h2>
+        <h2 className="login-title bg">RailVista</h2>
         <form onSubmit={handleLogin}>
           <div className="form-entry">
             <input
