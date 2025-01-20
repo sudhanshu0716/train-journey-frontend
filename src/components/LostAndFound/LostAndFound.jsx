@@ -15,15 +15,28 @@ const LostAndFound = () => {
   const [foundedItems, setFoundedItems] = useState([]);
 
   const handleLostInputChange = (e) => {
-    setLostForm({ ...lostForm, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "trainNumber" && value.length > 5) return;
+    setLostForm({ ...lostForm, [name]: value });
   };
 
   const handleFoundInputChange = (e) => {
-    setFoundForm({ ...foundForm, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "trainNumber" && value.length > 5) return;
+    if (name === "contactDetails" && !/^\d{0,10}$/.test(value)) return;
+    setFoundForm({ ...foundForm, [name]: value });
   };
 
   const reportFoundItem = async (e) => {
     e.preventDefault();
+    if (foundForm.trainNumber.length !== 5) {
+      alert("Train number must be exactly 5 characters.");
+      return;
+    }
+    if (foundForm.contactDetails.length !== 10) {
+      alert("Contact number must be exactly 10 digits.");
+      return;
+    }
     try {
       const response = await axios.post(
         "https://train-journey-backend.onrender.com/api/lost-and-found/report-found",
@@ -37,17 +50,24 @@ const LostAndFound = () => {
         contactDetails: "",
       });
     } catch (error) {
-      alert( "Failed to report the item. Please try again.");
+      alert("Failed to report the item. Please try again.");
     }
   };
 
   const searchLostItems = async (e) => {
     e.preventDefault();
+    if (lostForm.trainNumber.length !== 5) {
+      alert("Train number must be exactly 5 characters.");
+      return;
+    }
     try {
       const response = await axios.post(
         "https://train-journey-backend.onrender.com/api/lost-and-found/search-lost",
         lostForm
       );
+      if (response.data.lostItems.length === 0) {
+        alert("No items found for the specified train number and date.");
+      }
       setLostItems(response.data.lostItems);
     } catch (error) {
       alert("Failed to fetch lost items. Please try again.");
@@ -148,7 +168,8 @@ const LostAndFound = () => {
                   <li className="to-be-found" key={item._id}>
                     <p>
                       <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong>{" "}
-                      {item.date} | <strong>Description:</strong> {item.itemDescription}
+                      {item.date} | <strong>Description:</strong> {item.itemDescription} |{" "}
+                      <strong>Contact:</strong> {item.contactDetails}
                     </p>
                     <button className="to-be-found-button" onClick={() => markAsFounded(item._id)}>Mark as Founded</button>
                   </li>
