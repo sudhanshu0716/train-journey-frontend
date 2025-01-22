@@ -24,13 +24,10 @@ const MainMenu = () => {
   return (
     <div className="main-menu-wrapper">
       <div className="navbar">
-      <div className="buffer">
-        <img src={buffer} alt="" />
-      </div>
       <nav className="horizontal-nav">
-        <div className="gate">
+        {/* <div className="gate">
         <img src={gate} alt="" />
-        </div>
+        </div> */}
         <ul>
           <li className="nav-item">
             <Link to="/scenic">
@@ -64,9 +61,7 @@ const MainMenu = () => {
             </Link>
           </li>
         </ul>
-        <div className="gate1">
-          <img src={gate} alt="" />
-        </div>
+    
         <div className="nav-text-container">
           <div className="nav-text">INDIAN RAILWAYS</div>
           <div className="nav-text">INDIAN RAILWAYS</div>
