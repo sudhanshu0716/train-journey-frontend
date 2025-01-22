@@ -42,8 +42,8 @@
 /* Horizontal Navbar Styling */
 .horizontal-nav {
   margin-top: 7px;
-  width: 97.3%;
-  background: linear-gradient(to bottom, rgb(235, 21, 21) 78%, rgb(146, 146, 146) 22%); 
+  width: 99%;
+  background: linear-gradient(to bottom, rgb(1, 147, 214) 78%, rgb(146, 146, 146) 22%); 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
   height: 100px;
@@ -55,11 +55,11 @@
   z-index: 1000;
   animation: navbarSlideIn 0.5s ease-out;
   align-items: flex-end; /* Align items to the bottom */
-  margin-left: 2.5%;
+  margin-left: .5%;
   border-bottom-left-radius: 7%;
   border-top-left-radius: 7%;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
+  border-bottom-right-radius: 7%;
+  border-top-right-radius: 7%;
   
 }
 
@@ -77,8 +77,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 30px;
-  padding-bottom: 6px;
+  gap: 100px;
+  padding-bottom: 4px;
   z-index: 1001; /* Ensure links are above other elements */
 }
 
@@ -127,9 +127,10 @@
     transform: translateY(0);
   }
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
 .nav-item a {
-  font-size: 25px;
+  font-family: "Gugi", serif;
+  font-size: 26px;
   font-weight: 500;
   color: #ffffff;
   text-decoration: none;
@@ -145,7 +146,6 @@
 .nav-item a:hover {
   color: azure;
   transform: scale(1.2);
-
 }
 
 
@@ -223,6 +223,15 @@
   }
 }
 
+.heading-grid {
+  margin-bottom: -80px;
+  margin-top: 80px;
+  color: rgb(218, 221, 255);
+  font-size: 45px;
+  animation: fadeInText 1s ease-out;
+  font-family:'Courier New', Courier, monospace;
+}
+
 /* 3x2 Image Grid Styling */
 .image-grid-container {
   width: 100%;
@@ -232,6 +241,7 @@
   grid-gap: 20px;
   margin-top: 20px;
   animation: fadeInGrid 1s ease-out;
+  scale: 0.9;
 }
 .mmfoot-links {
   display: flex;
