@@ -27,19 +27,22 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/main-menu" element={<MainMenu />} />
         <Route path="/lost" element={<LostAndFound />} />
-        {/* <Route path="/scenic" element={<ScenicView />} /> */}
-        <Route path="/scenic" element={<Test />} />
+        
+        {/* You may want to use ScenicView instead of Test */}
+        <Route path="/scenic" element={<Test />} /> 
 
         <Route path="/crush" element={<CrushTheRush />} />
-        
+
+        {/* Admin routes */}
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/adminmap" element={<AdminMap />} />
         <Route path="/adminmenu" element={<AdminMenu />} />
         <Route path="/adminlost" element={<LostAndFoundAdminPanel />} />
-        <Route path="/" element={<MainMenu />} />
+        
+        {/* Other pages */}
         <Route path="/about" element={<About />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/feedback" element={<Feedback/>} />
+        <Route path="/feedback" element={<Feedback />} />
         <Route path="/instant-help" element={<HelpForm />} />
       </Routes>
     </Router>
