@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "leaflet";
-import "./scenicview.css";
+import styles from "./scenicview.module.css"; // Fixed CSS Module Import
 import SlidingCardSlider from "./SlidingCardSlider";
 import Train from "../../assets/train-4781.gif";
 import Chatbot from "../Chatbot/Chatbot";
@@ -24,7 +24,9 @@ const ScenicView = () => {
   // Fetching marker data from API
   useEffect(() => {
     const fetchMarkers = async () => {
-      const response = await fetch("https://train-journey-backend.onrender.com/api/marked-points");
+      const response = await fetch(
+        "https://train-journey-backend.onrender.com/api/marked-points"
+      );
       const data = await response.json();
       setMarkers(data);
     };
@@ -95,26 +97,24 @@ const ScenicView = () => {
 
       setRingEffect(true);
       setTimeout(() => {
-        setRingEffect(false); 
+        setRingEffect(false);
       }, 10000);
     }
   }, [notifications, alarmOn]);
 
   return (
-    
-    
-    <div className="scenic-view">
-      <div className="scenic-view-container">
-        <div className="head-scenic">
+    <div className={styles.scenicView}>
+      <div className={styles.scenicViewContainer}>
+        {/* Header Section */}
+        <div className={styles.headScenic}>
           <div>
             <h1>
               Scenic <span style={{ color: "green" }}>View</span>
             </h1>
           </div>
-          <div className="alarm">
+          {/* Alarm Icon */}
+          <div className={styles.alarm}>
             <span>
-              {/* Alarm icon */}
-
               <i
                 className={`fa-${alarmOn ? "solid" : "regular"} fa-bell`}
                 onClick={toggleAlarm}
@@ -129,24 +129,35 @@ const ScenicView = () => {
           </div>
         </div>
 
-        <button onClick={shareLocation}><i class="fa-solid fa-location-dot"> </i> Share Location</button>
-<div><SlidingCardSlider /></div>
-        <div className="notification-box">
+        {/* Share Location Button */}
+        <button onClick={shareLocation}>
+          <i className="fa-solid fa-location-dot"></i> Share Location
+        </button>
+
+        {/* Sliding Card Component */}
+        <div>
+          <SlidingCardSlider />
+        </div>
+
+        {/* Notification Box */}
+        <div className={styles.notificationBox}>
           <h3>Notifications</h3>
           {notifications.length > 0 ? (
             notifications.map((note, index) => {
               const marker = markers.find(
                 (m) => `Nearby Place: ${m.title}` === note
               );
-              const imageUrl = `../../../public/assets/${marker?.title}.jpg`;
+              const imageUrl = `/assets/${marker?.title}.jpg`; // Fixed Image Path
 
               return (
                 <div
                   key={index}
-                  className={`notification-item ${ringEffect ? "ring" : ""}`} // Add ring effect class
+                  className={`${styles.notificationItem} ${
+                    ringEffect ? styles.ring : ""
+                  }`} // Add ring effect class
                 >
                   <h5>{note}</h5>
-                  <div className="image-box">
+                  <div className={styles.imageBox}>
                     <img src={imageUrl} alt={marker?.title} />
                   </div>
                 </div>
@@ -156,21 +167,16 @@ const ScenicView = () => {
             <p>No nearby markers.</p>
           )}
         </div>
-           {/* Moving GIF */}
-      <div className="moving-gif-container">
-        <img
-          src={Train}
-          alt="Moving GIF"
-          className="moving-gif"
-        />
-      </div>
-      
+
+        {/* Moving GIF */}
+        <div className={styles.movingGifContainer}>
+          <img src={Train} alt="Moving GIF" className={styles.movingGif} />
+        </div>
       </div>
 
+      {/* Chatbot Component */}
       <Chatbot />
-     
     </div>
-
   );
 };
 

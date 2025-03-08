@@ -1,213 +1,392 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "./Lost.css";
+"use client"
 
-const LostAndFound = () => {
-  const [lostForm, setLostForm] = useState({ trainNumber: "", date: "" });
+import { useState } from "react"
+import axios from "axios"
+import "./Lost.css"
+
+// Define the component as a named function
+function LostAndFound() {
+  const [lostForm, setLostForm] = useState({ trainNumber: "", date: "" })
   const [foundForm, setFoundForm] = useState({
     trainNumber: "",
     date: "",
     itemDescription: "",
     contactDetails: "",
-  });
+  })
 
-  const [lostItems, setLostItems] = useState([]);
-  const [foundedItems, setFoundedItems] = useState([]);
+  const [lostItems, setLostItems] = useState([])
+  const [foundedItems, setFoundedItems] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleLostInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "trainNumber" && value.length > 5) return;
-    setLostForm({ ...lostForm, [name]: value });
-  };
+    const { name, value } = e.target
+    if (name === "trainNumber" && value.length > 5) return
+    setLostForm({ ...lostForm, [name]: value })
+  }
 
   const handleFoundInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "trainNumber" && value.length > 5) return;
-    if (name === "contactDetails" && !/^\d{0,10}$/.test(value)) return;
-    setFoundForm({ ...foundForm, [name]: value });
-  };
+    const { name, value } = e.target
+    if (name === "trainNumber" && value.length > 5) return
+    if (name === "contactDetails" && !/^\d{0,10}$/.test(value)) return
+    setFoundForm({ ...foundForm, [name]: value })
+  }
 
   const reportFoundItem = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (foundForm.trainNumber.length !== 5) {
-      alert("Train number must be exactly 5 characters.");
-      return;
+      alert("Train number must be exactly 5 characters.")
+      return
     }
     if (foundForm.contactDetails.length !== 10) {
-      alert("Contact number must be exactly 10 digits.");
-      return;
+      alert("Contact number must be exactly 10 digits.")
+      return
     }
+
+    setIsLoading(true)
     try {
       const response = await axios.post(
         "https://train-journey-backend.onrender.com/api/lost-and-found/report-found",
-        foundForm
-      );
-      alert(response.data.message);
+        foundForm,
+      )
+      alert(response.data.message)
       setFoundForm({
         trainNumber: "",
         date: "",
         itemDescription: "",
         contactDetails: "",
-      });
+      })
     } catch (error) {
-      alert("Failed to report the item. Please try again.");
+      alert("Failed to report the item. Please try again.")
+    } finally {
+      setIsLoading(false)
     }
-  };
+  }
 
   const searchLostItems = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (lostForm.trainNumber.length !== 5) {
-      alert("Train number must be exactly 5 characters.");
-      return;
+      alert("Train number must be exactly 5 characters.")
+      return
     }
+
+    setIsLoading(true)
     try {
       const response = await axios.post(
         "https://train-journey-backend.onrender.com/api/lost-and-found/search-lost",
-        lostForm
-      );
+        lostForm,
+      )
       if (response.data.lostItems.length === 0) {
-        alert("No items found for the specified train number and date.");
+        alert("No items found for the specified train number and date.")
       }
-      setLostItems(response.data.lostItems);
+      setLostItems(response.data.lostItems)
     } catch (error) {
-      alert("Failed to fetch lost items. Please try again.");
+      alert("Failed to fetch lost items. Please try again.")
+    } finally {
+      setIsLoading(false)
     }
-  };
+  }
 
   const markAsFounded = async (id) => {
+    setIsLoading(true)
     try {
       const response = await axios.patch(
-        `https://train-journey-backend.onrender.com/api/lost-and-found/mark-as-founded/${id}`
-      );
-      alert(response.data.message);
-      setLostItems(lostItems.filter((item) => item._id !== id));
+        `https://train-journey-backend.onrender.com/api/lost-and-found/mark-as-founded/${id}`,
+      )
+      alert(response.data.message)
+      setLostItems(lostItems.filter((item) => item._id !== id))
+      // Refresh founded items after marking
+      fetchFoundedItems()
     } catch (error) {
-      alert(error.response?.data?.message || "Failed to mark item as founded. Please try again.");
+      alert(error.response?.data?.message || "Failed to mark item as founded. Please try again.")
+    } finally {
+      setIsLoading(false)
     }
-  };
+  }
 
   const fetchFoundedItems = async () => {
+    setIsLoading(true)
     try {
-      const response = await axios.get(
-        "https://train-journey-backend.onrender.com/api/lost-and-found/founded-items"
-      );
-      setFoundedItems(response.data.foundedItems);
+      const response = await axios.get("https://train-journey-backend.onrender.com/api/lost-and-found/founded-items")
+      setFoundedItems(response.data.foundedItems)
     } catch (error) {
-      alert(error.response?.data?.message || "Failed to fetch founded items.");
+      alert(error.response?.data?.message || "Failed to fetch founded items.")
+    } finally {
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <div className="landf">
-      <div className="lost-and-found-container">
-        <h1>Lost and Found</h1>
-        <div className="lost-and-found-forms">
-          <form className="lost-form" onSubmit={searchLostItems}>
-            <h2>Search Lost Items</h2>
-            <input
-              type="text"
-              name="trainNumber"
-              placeholder="Train Number"
-              value={lostForm.trainNumber}
-              onChange={handleLostInputChange}
-              required
-            />
-            <input
-              type="date"
-              name="date"
-              value={lostForm.date}
-              onChange={handleLostInputChange}
-              required
-            />
-            <button type="submit">Search</button>
-          </form>
+      <div className="lostAndFoundContainer">
+        <h1>
+          <i className="fas fa-search-location"></i> Lost and Found
+        </h1>
 
-          <form className="found-form" onSubmit={reportFoundItem}>
-            <h2>Report Found Item</h2>
-            <input
-              type="text"
-              name="trainNumber"
-              placeholder="Train Number"
-              value={foundForm.trainNumber}
-              onChange={handleFoundInputChange}
-              required
-            />
-            <input
-              type="date"
-              name="date"
-              value={foundForm.date}
-              onChange={handleFoundInputChange}
-              required
-            />
-            <input
-              type="text"
-              name="itemDescription"
-              placeholder="Item Description"
-              value={foundForm.itemDescription}
-              onChange={handleFoundInputChange}
-              required
-            />
-            <input
-              type="text"
-              name="contactDetails"
-              placeholder="Contact Details"
-              value={foundForm.contactDetails}
-              onChange={handleFoundInputChange}
-              required
-            />
-            <button type="submit">Report</button>
-          </form>
-        </div>
+        <div className="content-wrapper">
+          {/* Left Column - Forms */}
+          <div className="forms-column">
+            <form className="form-card lost-form" onSubmit={searchLostItems}>
+              <div className="card-header">
+                <i className="fas fa-search"></i>
+                <h2>Search Lost Items</h2>
+              </div>
 
-        <div className="lost-and-found-lists">
-          <div className="lost-items-list">
-            <h2>Unfounded Items</h2>
-            {lostItems.length > 0 ? (
-              <ul>
-                {lostItems.map((item) => (
-                  <li className="to-be-found" key={item._id}>
-                    <p>
-                      <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong>{" "}
-                      {item.date} | <strong>Description:</strong> {item.itemDescription} |{" "}
-                      <strong>Contact:</strong> {item.contactDetails}
-                    </p>
-                    <button className="to-be-found-button" onClick={() => markAsFounded(item._id)}>Mark as Founded</button>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No lost items found.</p>
-            )}
+              <div className="form-group">
+                <label htmlFor="lostTrainNumber">
+                  <i className="fas fa-train"></i> Train Number
+                </label>
+                <div className="input-wrapper">
+                  <input
+                    id="lostTrainNumber"
+                    type="text"
+                    name="trainNumber"
+                    placeholder="Enter 5-digit train number"
+                    value={lostForm.trainNumber}
+                    onChange={handleLostInputChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="lostDate">
+                  <i className="fas fa-calendar-alt"></i> Date
+                </label>
+                <div className="input-wrapper">
+                  <input
+                    id="lostDate"
+                    type="date"
+                    name="date"
+                    value={lostForm.date}
+                    onChange={handleLostInputChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" className="primary-button" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin"></i> Searching...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-search"></i> Search
+                  </>
+                )}
+              </button>
+            </form>
+
+            <form className="form-card found-form" onSubmit={reportFoundItem}>
+              <div className="card-header">
+                <i className="fas fa-hand-holding"></i>
+                <h2>Report Found Item</h2>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="foundTrainNumber">
+                  <i className="fas fa-train"></i> Train Number
+                </label>
+                <div className="input-wrapper">
+                  <input
+                    id="foundTrainNumber"
+                    type="text"
+                    name="trainNumber"
+                    placeholder="Enter 5-digit train number"
+                    value={foundForm.trainNumber}
+                    onChange={handleFoundInputChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="foundDate">
+                  <i className="fas fa-calendar-alt"></i> Date
+                </label>
+                <div className="input-wrapper">
+                  <input
+                    id="foundDate"
+                    type="date"
+                    name="date"
+                    value={foundForm.date}
+                    onChange={handleFoundInputChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="itemDescription">
+                  <i className="fas fa-info-circle"></i> Item Description
+                </label>
+                <div className="input-wrapper">
+                  <input
+                    id="itemDescription"
+                    type="text"
+                    name="itemDescription"
+                    placeholder="Describe the item you found"
+                    value={foundForm.itemDescription}
+                    onChange={handleFoundInputChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="contactDetails">
+                  <i className="fas fa-phone-alt"></i> Contact Number
+                </label>
+                <div className="input-wrapper">
+                  <input
+                    id="contactDetails"
+                    type="text"
+                    name="contactDetails"
+                    placeholder="Enter 10-digit contact number"
+                    value={foundForm.contactDetails}
+                    onChange={handleFoundInputChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" className="primary-button" disabled={isLoading}>
+                {isLoading ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin"></i> Submitting...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-plus-circle"></i> Report Item
+                  </>
+                )}
+              </button>
+            </form>
           </div>
 
-          <div className="founded-items-list">
-            <h2>Founded Items</h2>
-            <button
-              className="lost-and-found-refresh-button"
-              onClick={fetchFoundedItems}
-            >
-              Refresh Founded Items
-            </button>
-            {foundedItems.length > 0 ? (
-              <ul>
-                {foundedItems.map((item) => (
-                  <li key={item._id}>
-                    <p>
-                      <strong>Train:</strong> {item.trainNumber} | <strong>Date:</strong>{" "}
-                      {item.date} | <strong>Description:</strong> {item.itemDescription} |{" "}
-                      <strong>Contact:</strong> {item.contactDetails}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No founded items found.</p>
-            )}
+          {/* Right Column - Lists */}
+          <div className="lists-column">
+            <div className="list-card unfounded-items">
+              <div className="card-header">
+                <i className="fas fa-box-open"></i>
+                <h2>Unfounded Items</h2>
+              </div>
+              <div className="scrollable-list">
+                {lostItems.length > 0 ? (
+                  <ul>
+                    {lostItems.map((item) => (
+                      <li key={item._id}>
+                        <div className="item-details">
+                          <div className="item-info">
+                            <p>
+                              <i className="fas fa-train"></i>
+                              <span>Train:</span> {item.trainNumber}
+                            </p>
+                            <p>
+                              <i className="fas fa-calendar-day"></i>
+                              <span>Date:</span> {new Date(item.date).toLocaleDateString()}
+                            </p>
+                            <p>
+                              <i className="fas fa-info-circle"></i>
+                              <span>Description:</span> {item.itemDescription}
+                            </p>
+                            <p>
+                              <i className="fas fa-phone"></i>
+                              <span>Contact:</span> {item.contactDetails}
+                            </p>
+                          </div>
+                          <button
+                            className="action-button"
+                            onClick={() => markAsFounded(item._id)}
+                            disabled={isLoading}
+                          >
+                            {isLoading ? (
+                              <>
+                                <i className="fas fa-spinner fa-spin"></i> Processing...
+                              </>
+                            ) : (
+                              <>
+                                <i className="fas fa-check-circle"></i> Mark as Found
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="empty-state">
+                    <i className="fas fa-search"></i>
+                    <p>No unfounded items to display</p>
+                    <p className="hint">Search for lost items using the form on the left</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="list-card founded-items">
+              <div className="card-header">
+                <i className="fas fa-clipboard-check"></i>
+                <h2>Founded Items</h2>
+                <button className="refresh-button" onClick={fetchFoundedItems} disabled={isLoading}>
+                  {isLoading ? (
+                    <>
+                      <i className="fas fa-spinner fa-spin"></i> Refreshing...
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-sync-alt"></i> Refresh
+                    </>
+                  )}
+                </button>
+              </div>
+              <div className="scrollable-list">
+                {foundedItems.length > 0 ? (
+                  <ul>
+                    {foundedItems.map((item) => (
+                      <li key={item._id} className="found-item">
+                        <div className="item-details">
+                          <div className="item-info">
+                            <p>
+                              <i className="fas fa-train"></i>
+                              <span>Train:</span> {item.trainNumber}
+                            </p>
+                            <p>
+                              <i className="fas fa-calendar-day"></i>
+                              <span>Date:</span> {new Date(item.date).toLocaleDateString()}
+                            </p>
+                            <p>
+                              <i className="fas fa-info-circle"></i>
+                              <span>Description:</span> {item.itemDescription}
+                            </p>
+                            <p>
+                              <i className="fas fa-phone"></i>
+                              <span>Contact:</span> {item.contactDetails}
+                            </p>
+                          </div>
+                          <div className="status-badge">
+                            <i className="fas fa-check-circle"></i> Found
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="empty-state">
+                    <i className="fas fa-box-open"></i>
+                    <p>No founded items to display</p>
+                    <p className="hint">Click refresh to load founded items</p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LostAndFound;
+// Make sure to export the component as default
+export default LostAndFound
+

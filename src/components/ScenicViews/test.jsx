@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import ScenicView from './ScenicView';
 import welcomeVideo from "../../assets/welcome.mp4"
 import loopVideo from "../../assets/map.mp4";
-import './test.css';
+import styles from './test.module.css';
 
 const Test = () => {
   const [playSecondVideo, setPlaySecondVideo] = useState(false);
@@ -34,15 +34,15 @@ const Test = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="video-section">
+    <div className={styles.container}>
+      <div className={styles.videoSection}>
         {!playSecondVideo ? (
-          <video ref={videoRef} src={welcomeVideo} autoPlay playsInline className="video" />
+          <video ref={videoRef} src={welcomeVideo} autoPlay playsInline className={styles.video} />
         ) : (
-          <video src={loopVideo} autoPlay muted loop playsInline className="video" />
+          <video src={loopVideo} autoPlay muted loop playsInline className={styles.video} />
         )}
       </div>
-      <div className="text-section">
+      <div className={styles.textSection}>
         <ScenicView />
       </div>
     </div>

@@ -1,4 +1,4 @@
-.feedback-container {
+.feedbackContainer {
   min-height: 100vh;
   padding: 4rem 2rem;
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.feedback-content {
+.feedbackContent {
   background: rgba(255, 255, 255, 0.95);
   padding: 3rem;
   border-radius: 20px;
@@ -30,7 +30,7 @@
   }
 }
 
-.feedback-container h1 {
+.feedbackContainer h1 {
   color: white;
   margin-bottom: 2rem;
   font-size: 2.5rem;
@@ -38,13 +38,13 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.form-group {
+.formGroup {
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
 }
 
-.form-group label {
+.formGroup label {
   display: block;
   margin-bottom: 0.75rem;
   color: #2a5298;
@@ -54,9 +54,9 @@
   transition: all 0.3s ease;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
   width: 100%;
   padding: 1rem;
   border: 2px solid #e1e5ee;
@@ -66,26 +66,26 @@
   transition: all 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
   border-color: #2a5298;
   box-shadow: 0 0 0 4px rgba(42, 82, 152, 0.1);
   outline: none;
 }
 
-.form-group input:focus + label,
-.form-group select:focus + label,
-.form-group textarea:focus + label {
+.formGroup input:focus + label,
+.formGroup select:focus + label,
+.formGroup textarea:focus + label {
   color: #1e3c72;
 }
 
-.form-group textarea {
+.formGroup textarea {
   resize: vertical;
   min-height: 120px;
 }
 
-.submit-button {
+.submitButton {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
   padding: 1rem 2rem;
@@ -100,16 +100,16 @@
   overflow: hidden;
 }
 
-.submit-button:hover {
+.submitButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(42, 82, 152, 0.3);
 }
 
-.submit-button:active {
+.submitButton:active {
   transform: translateY(0);
 }
 
-.success-message {
+.successMessage {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -185,16 +185,16 @@
   }
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
   color: #a0a0a0;
 }
 
-.input-animated {
+.inputAnimated {
   position: relative;
 }
 
-.input-animated::after {
+.inputAnimated::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -205,7 +205,7 @@
   transition: all 0.3s ease;
 }
 
-.input-animated:focus-within::after {
+.inputAnimated:focus-within::after {
   width: 100%;
   left: 0;
 }

@@ -1,6 +1,6 @@
 // Feedback.js
 import React, { useState } from 'react';
-import './Feedback.css';
+import styles from './Feedback.module.css';
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState({
@@ -40,12 +40,12 @@ const Feedback = () => {
   };
 
   return (
-    <div className="feedback-container">
+    <div className={styles.feedbackContainer}>
       <h1>Feedback</h1>
-      <div className="feedback-content">
+      <div className={styles.feedbackContent}>
         <form onSubmit={handleSubmit}>
           {/* Form Fields */}
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -57,7 +57,7 @@ const Feedback = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -69,7 +69,7 @@ const Feedback = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="type">Feedback Type</label>
             <select
               id="type"
@@ -84,7 +84,7 @@ const Feedback = () => {
             </select>
           </div>
 
-          <div className="form-group">
+          <div className={styles.formGroup}>
             <label htmlFor="message">Your Feedback</label>
             <textarea
               id="message"
@@ -96,10 +96,10 @@ const Feedback = () => {
             ></textarea>
           </div>
 
-          <button type="submit" className="submit-button">
+          <button type="submit" className={styles.submitButton}>
             Submit Feedback
           </button>
-          {submitted && <div className="success-message">✔ Feedback Submitted!</div>}
+          {submitted && <div className={styles.successMessage}>✔ Feedback Submitted!</div>}
         </form>
       </div>
     </div>

@@ -1,26 +1,26 @@
-.scenic-view {
+.scenicView {
   min-height: 100vh; /* Ensure it covers the full viewport */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image: url(../../assets/scenic.jpg); */
+ 
   background-size: cover;
 }
-/* Optional: Add hover effect for the alarm icon */
+
 .fa-bell:hover {
   color: #eb0d0d;
   transition: color 0.3s ease;
 }
-.head-scenic{
+.headScenic{
   display: flex;
   justify-content: center;
   margin-left: 150px;
 }
-.head-scenic .alarm{
+.headScenic .alarm{
  margin-left: 100px;
 }
 
-.scenic-view-container {
+.scenicViewContainer {
   text-align: center;
   padding: 20px;
   border-radius: 15px;
@@ -31,14 +31,14 @@
   position: fixed;
 }
 
-.scenic-view-container h1 {
+.scenicViewContainer h1 {
   font-size: 4rem;
   color: #2a3d6a;
   margin-bottom: 20px;
   animation: fadeIn 1.5s ease-in-out;
 }
 
-.scenic-view-container button {
+.scenicViewContainer button {
   padding: 12px 24px;
   background-color: #2a3d6a;
   color: white;
@@ -49,12 +49,12 @@
   transition: background-color 0.3s ease;
 }
 
-.scenic-view-container button:hover {
+.scenicViewContainer button:hover {
   background-color: #405d8b;
 }
 
 /* Notification box styling */
-.notification-box {
+.notificationBox {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 20px;
@@ -63,13 +63,13 @@
   animation: slideUp 1s ease-out;
 }
 
-.notification-box h3 {
+.notificationBox h3 {
   font-size: 1.8rem;
   color: #2a3d6a;
   margin-bottom: 15px;
 }
 
-.notification-item {
+.notificationItem {
   background-color: #f9f9f9;
   border-radius: 8px;
   padding: 10px;
@@ -78,20 +78,20 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.notification-item h5 {
+.notificationItem h5 {
   font-size: 40px;
 }
 
-.notification-item:hover {
+.notificationItem:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.image-box {
+.imageBox {
   margin-top: 10px;
   text-align: center;
 }
 
-.image-box img {
+.imageBox img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
@@ -100,7 +100,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image-box img:hover {
+.imageBox img:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -127,11 +127,11 @@
 }
 
 
-.moving-gif-container{
+.movingGifContainer{
   height: 20px;
   width: 100px;
 }
-.moving-gif {
+.movingGif {
   width: 100%;
   height: auto;
   animation: moveGif 10s linear infinite;

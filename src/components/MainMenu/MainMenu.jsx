@@ -127,6 +127,7 @@ const MainMenu = () => {
           <Link to="/privacy-policy" className="mmfoot-link">Privacy Policy</Link>
           <Link to="/feedback" className="mmfoot-link">Feedback</Link>
         </div>
+        <hr />
         <h4 className="mmcopyr">2024 © SUDHANSHU, All Rights Reserved</h4>
         </div>
       </div>

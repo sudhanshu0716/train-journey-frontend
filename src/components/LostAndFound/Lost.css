@@ -1,8 +1,12 @@
-/* LostAndFound Component Styling */
+/* Font import */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+/* Base Styles */
 .landf {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #eef2f3, #8e9eab);
-  color: #333;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f6f9fc, #e3eeff);
+  color: #2d3748;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,12 +15,582 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Add this to your CSS */
+.lostAndFoundContainer {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 10px 25px rgba(31, 17, 100, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.8)
+    inset;
+  width: 95%;
+  max-width: 1300px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-@keyframes slideIn {
+.lostAndFoundContainer h1 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 35px;
+  color: #4a5568;
+  font-weight: 600;
+  background: linear-gradient(135deg, #3a7bd5, #6d5dfc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.lostAndFoundContainer h1 i {
+  font-size: 2rem;
+}
+
+.lostAndFoundContainer h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #3a7bd5, #6d5dfc);
+  border-radius: 2px;
+}
+
+/* Two-column layout */
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+}
+
+/* Left column - Forms */
+.forms-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+/* Right column - Lists */
+.lists-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+/* Card styling */
+.form-card,
+.list-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before,
+.list-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #3a7bd5, #6d5dfc);
+}
+
+.lost-form::before {
+  /* background: linear-gradient(90deg, #3a7bd5, #00c6ff); */
+  background: linear-gradient(135deg, #f46b45, #eea849);
+}
+
+.found-form::before {
+  background: linear-gradient(90deg, #11998e, #38ef7d);
+}
+
+.unfounded-items::before {
+  background: linear-gradient(90deg, #f46b45, #eea849);
+}
+
+.founded-items::before {
+  background: linear-gradient(90deg, #11998e, #38ef7d);
+}
+
+.form-card:hover,
+.list-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
+}
+
+/* Card header */
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 12px;
+}
+
+.card-header i {
+  font-size: 1.5rem;
+  color: #4a5568;
+  background: linear-gradient(135deg, #3a7bd5, #6d5dfc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lost-form .card-header i {
+  /* background: linear-gradient(135deg, #3a7bd5, #00c6ff); */
+   background: linear-gradient(135deg, #f46b45, #eea849);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.found-form .card-header i {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.unfounded-items .card-header i {
+  background: linear-gradient(135deg, #f46b45, #eea849);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.founded-items .card-header i {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Form styling */
+.form-card h2,
+.list-card h2 {
+  font-size: 1.6rem;
+  color: #4a5568;
+  font-weight: 600;
+  margin: 0;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group label i {
+  color: #6d5dfc;
+  font-size: 1rem;
+}
+
+.input-wrapper {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+  box-shadow: 0 0 0 2px #6d5dfc, 0 4px 10px rgba(109, 93, 252, 0.2);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: background 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus {
+  background: #fff;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(135deg, #3a7bd5, #6d5dfc);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(109, 93, 252, 0.3);
+}
+
+.lost-form .primary-button {
+  background: linear-gradient(135deg, #3a7bd5, #00c6ff);
+  box-shadow: 0 4px 15px rgba(58, 123, 213, 0.3);
+}
+
+.found-form .primary-button {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  box-shadow: 0 4px 15px rgba(17, 153, 142, 0.3);
+}
+
+.primary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(109, 93, 252, 0.4);
+}
+
+.lost-form .primary-button:hover {
+  box-shadow: 0 8px 20px rgba(58, 123, 213, 0.4);
+}
+
+.found-form .primary-button:hover {
+  box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+}
+
+.primary-button:active {
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+  background: linear-gradient(135deg, #a0aec0, #cbd5e0);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 10px rgba(160, 174, 192, 0.3);
+}
+
+.primary-button i {
+  font-size: 1.1rem;
+}
+
+/* List styling */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.refresh-button {
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(135deg, #3a7bd5, #6d5dfc);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(109, 93, 252, 0.2);
+}
+
+.founded-items .refresh-button {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  box-shadow: 0 4px 10px rgba(17, 153, 142, 0.2);
+}
+
+.refresh-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(109, 93, 252, 0.3);
+}
+
+.founded-items .refresh-button:hover {
+  box-shadow: 0 6px 15px rgba(17, 153, 142, 0.3);
+}
+
+.refresh-button:disabled {
+  background: linear-gradient(135deg, #a0aec0, #cbd5e0);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 10px rgba(160, 174, 192, 0.2);
+}
+
+.scrollable-list {
+  max-height: 350px;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 6px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.scrollable-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 8px;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+.scrollable-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.scrollable-list li {
+  padding: 18px;
+  margin-bottom: 12px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.unfounded-items .scrollable-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #f46b45, #eea849);
+  border-radius: 2px 0 0 2px;
+}
+
+.founded-items .scrollable-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #11998e, #38ef7d);
+  border-radius: 2px 0 0 2px;
+}
+
+.scrollable-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-info p i {
+  color: #6d5dfc;
+  font-size: 0.9rem;
+  width: 20px;
+  text-align: center;
+}
+
+.unfounded-items .item-info p i {
+  color: #f46b45;
+}
+
+.founded-items .item-info p i {
+  color: #11998e;
+}
+
+.item-info p span {
+  font-weight: 600;
+  color: #4a5568;
+  margin-right: 4px;
+}
+
+.action-button {
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(135deg, #f46b45, #eea849);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(244, 107, 69, 0.2);
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(244, 107, 69, 0.3);
+}
+
+.action-button:disabled {
+  background: linear-gradient(135deg, #a0aec0, #cbd5e0);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 10px rgba(160, 174, 192, 0.2);
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(17, 153, 142, 0.2);
+}
+
+/* Empty state styling */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #cbd5e0;
+}
+
+.unfounded-items .empty-state i {
+  background: linear-gradient(135deg, #f46b45, #eea849);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.founded-items .empty-state i {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.empty-state p {
+  margin: 6px 0;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.empty-state .hint {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 400;
+}
+
+/* Responsive design */
+@media (max-width: 1000px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .lostAndFoundContainer {
+    padding: 25px;
+  }
+
+  .lostAndFoundContainer h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+
+  .form-card,
+  .list-card {
+    padding: 22px;
+  }
+
+  .form-card h2,
+  .list-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .scrollable-list {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lostAndFoundContainer {
+    padding: 20px;
+  }
+
+  .lostAndFoundContainer h1 {
+    font-size: 1.8rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .item-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .action-button,
+  .status-badge {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .refresh-button {
+    align-self: flex-end;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -24,158 +598,85 @@
   }
 }
 
-.landf {
-  flex: 1 1 calc(50% - 10px);
-  background: rgba(240, 248, 255, 0.9);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  opacity: 0; /* Initial state */
-  transform: translateY(50px); /* Initial state */
-  animation: slideIn 0.5s ease-out forwards; /* Animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(109, 93, 252, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(109, 93, 252, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(109, 93, 252, 0);
+  }
 }
 
-
-.lost-and-found-container {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  width: 90%;
-  max-width: 800px;
+.form-card,
+.list-card {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.lost-and-found-container h1 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.lost-form {
+  animation-delay: 0.1s;
 }
 
-.lost-and-found-forms {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+.found-form {
+  animation-delay: 0.2s;
 }
 
-form {
-  flex: 1 1 calc(50% - 10px);
-  background: rgba(240, 248, 255, 0.9);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+.unfounded-items {
+  animation-delay: 0.3s;
 }
 
-form h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #555;
+.founded-items {
+  animation-delay: 0.4s;
 }
 
-form input {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  background: #f4f9ff;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Shimmer effect for loading state */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
 }
 
-form button {
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  background: #6a82fb;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+.primary-button:disabled,
+.action-button:disabled,
+.refresh-button:disabled {
+  background: linear-gradient(to right, #e2e8f0 4%, #cbd5e0 25%, #e2e8f0 36%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
 }
 
-form button:hover {
-  background: #8fd3f4;
-  transform: scale(1.05);
+/* Hover effects for items */
+.scrollable-list li:hover {
+  border-color: rgba(109, 93, 252, 0.3);
 }
 
-.lost-and-found-lists {
-  margin-top: 30px;
+.unfounded-items .scrollable-list li:hover {
+  border-color: rgba(244, 107, 69, 0.3);
 }
 
-.lost-items-list,
-.founded-items-list {
-  background: rgba(240, 248, 255, 0.9);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
+.founded-items .scrollable-list li:hover {
+  border-color: rgba(17, 153, 142, 0.3);
 }
 
-.lost-items-list h2,
-.founded-items-list h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+/* Glass morphism effect */
+.lostAndFoundContainer {
+  position: relative;
 }
 
-.lost-items-list ul,
-.founded-items-list ul {
-  list-style: none;
-  padding: 0;
+.lostAndFoundContainer::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  filter: blur(20px);
+  z-index: -1;
+  border-radius: 25px;
 }
 
-.lost-items-list li,
-.founded-items-list li {
-  padding: 10px;
-  margin-bottom: 10px;
-  background: #f9fcff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.lost-items-list li p,
-.founded-items-list li p {
-  margin: 0;
-}
-
-button.lost-and-found-refresh-button {
-  display: block;
-  margin: 10px 0 20px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background: #6a82fb;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-button.lost-and-found-refresh-button:hover {
-  background: #8fd3f4;
-  transform: scale(1.05);
-}
-
-button {
-  font-weight: bold;
-}
-
-.to-be-found{
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.to-be-found-button{
-  width: 130px;
-  height: 40px;
-  border-radius: 15px;
-  background-color: #6a82fb;
-  border: none;
-  color: #fffafa;
-}
