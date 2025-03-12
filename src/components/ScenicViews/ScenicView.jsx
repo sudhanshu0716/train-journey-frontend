@@ -147,7 +147,7 @@ const ScenicView = () => {
               const marker = markers.find(
                 (m) => `Nearby Place: ${m.title}` === note
               );
-              const imageUrl = `/assets/${marker?.title}.jpg`; // Fixed Image Path
+              const imageUrl = `/assets/${marker?.title}.jpeg`; // Fixed Image Path
 
               return (
                 <div
